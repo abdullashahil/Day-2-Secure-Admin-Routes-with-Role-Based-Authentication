@@ -35,8 +35,7 @@ function Home() {
       localStorage.setItem("token", response.data.token);
       window.location.href = '/admin';
     } catch (error) {
-      setErrorMessage(error.response.data || "Login failed");
-    }
+      setErrorMessage(error.response?.data?.message || "Login failed");    }
   };
 
   return (

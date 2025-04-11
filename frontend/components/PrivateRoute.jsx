@@ -16,7 +16,7 @@ const PrivateRoute = ({ children }) => {
         });
         // If we reach here, the user is an admin
         setIsAuthorized(true);
-    } catch (err) {
+      } catch (err) {
         alert("Unauthorised access: You are not an admin!")
         // Either token is invalid or user is not an admin
         setIsAuthorized(false);
