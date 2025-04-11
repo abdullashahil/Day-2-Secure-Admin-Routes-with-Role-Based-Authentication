@@ -1,17 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home'; // Updated Home Page import
-import Admin from '../pages/Admin'; // Updated Admin Page import
+import { Routes, Route } from 'react-router-dom';
+import Admin from '../pages/Admin';
+import Home from '../pages/Home';
+import PrivateRoute from '../components/PrivateRoute';
 
-function App() {
+import React from 'react'
+
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-    </Router>
-  );
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      {/* Protect Admin Page */}
+      <Route
+        path="/admin"
+        element={
+          <PrivateRoute allowedRoles={['admin']}>
+            <Admin />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
+    )
 }
 
-export default App;
+export default App
